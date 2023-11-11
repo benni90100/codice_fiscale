@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>codice fiscale</title>
+        <link rel="stylesheet" href="style.css">
+        
+    </head>
+    <body>
+        <div class="container">
+            <div class="cod-fisc-container">
+                <!-- intestazione -->
+                <div class="intestazione">
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Emblem_of_Italy.svg/800px-Emblem_of_Italy.svg.png"
+                        alt>
+                    <div class="h-container">
+                        <h1>Calcolo Codice Fiscale</h1>
+                        <h2>Calcola il codice fiscale online</h2>
+                    </div>
+
+                </div>
+                <!-- chiusura container -->
+                <!-- form -->
+                <div class="form-container">
+                    <form action>
+                        <div class="field-nome p-1">
+                            <label for="nome">nome</label>
+                            <div class="input-field">
+                                <input type="text" id="nome">
+                            </div>
+                        </div>
+                        <div class="cognome-coontainer">
+                            <div class="surname-container p-1">
+                                <label for="cognome">cognome</label>
+                                <input type="text" id="cognome">
+                            </div>
+                            <div class="select-sex p-1">
+
+                                <label for="sesso">Sesso</label>
+                                <select name="sesso" id="sesso" class="selected">
+                                    <option value="M">M</option>
+                                    <option value="F">F</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="luogo-container p-1">
+                            <div class="label-luogo">
+                                <label for="l-d-nascita"><p>Luogo Di <br>
+                                        nascita</p></label>
+                            </div>
+                            <div class="luogo">
+                                <input type="l-d-nascita"></div>
+                        </div>
+
+                        <div class="prov-container p-1">
+                            <label for="prov">provincia</label>
+                            <select name="prov" id="prov">
+                                <label for="prov">provincia</label>
+                                <option value="prov">prov</option>
+                            </select>
+                            <label for="data">data di nascita
+                            </label>
+                            <input type="date" id="data">
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="button">
+            <button onclick="genera()">genera codice fiscale</button>
+        </div>
+<div class="codice-generato"> <p id="CF"></p></div>
+        
+        
+    </body>
+    <script src="script.js"></script>
+</html>
