@@ -2,19 +2,22 @@
 
 
 function getAnno() {
-    let annoDiNascita = 1993;
 
-    let anno = annoDiNascita.toString().substring(2);
-
+    let data = document.getElementById("data");
+    let dataSelect = new Date(data.value);
+    let anno = dataSelect.getFullYear()
+    anno = anno.toString().substring(2);
+    return anno
     console.log(anno);
 }
 
 
 function getMese() {
-    let meseDiNascita = [10];
+    let data = document.getElementById("data")
+    let meseSelect = new Date(data.value);
+    let mese = meseSelect.getMonth() + 1;
     const codiceMese = ["A", "B", "C", "D", "E", "H", "L", "M", "P", "R", "S", "T"]
-    let mese = []
-    switch (meseDiNascita[0]) {
+    switch (mese) {
         case 1:
             mese = codiceMese[0]
             console.log(mese);
@@ -70,41 +73,56 @@ function getMese() {
         default:
             break;
     }
+    return mese
+}
+function getAnno() {
+
+    let data = document.getElementById("data");
+    let dataSelect = new Date(data.value);
+    let anno = dataSelect.getFullYear()
+    anno = anno.toString().substring(2);
+    return anno
+    console.log(anno);
 }
 function getGiorno() {
-    let giornoDiNascita = 12
-    let sesso = "F"
-    let giorno;
+    let data = document.getElementById("data");
+    let sesso = "M"
+    const giornoNascita = new Date(data.value);
+    // console.log(giornoNascita);
+    let giornoMese = giornoNascita.getDate();
+    // console.log(giornoMese);
+
     if (sesso === "M") {
-        if (giornoDiNascita < 10) {
-            giorno = "0" + giornoDiNascita
+        if (giornoMese < 10) {
+            giorno = "0" + giornoMese
             console.log(giorno);
 
         } else {
-            giorno = giornoDiNascita;
+            giorno = giornoMese;
             console.log(giorno);
         }
 
     } else {
-        giorno = giornoDiNascita + 40
+        giorno = giornoMese + 40
         console.log(giorno);
     }
+    return giorno;
 
 }
 function lunghezzaNome() {
-    
-    
+
+
 }
 
 function getNome(nome) {
-    
-   
+
+
 
     let nomeToUpper = nome.toLocaleUpperCase()
     let splitNome = nomeToUpper.split("")
-  
-        
-    
+
+
+
 
     //    filtra le vocali
     let consonanti = splitNome.filter(function (splitNome) {
@@ -114,8 +132,15 @@ function getNome(nome) {
     let treConsonanti = consonanti.filter((carattere) => {
         return "ABCDEFGHILMANOPQRSTUVZJWXY".includes(carattere)
 
-    }).slice(0, 3).join("")
-    
+           
+    })
+    if (treConsonanti.length === 3) {
+        treConsonanti = treConsonanti.slice(0,3).join("")
+
+    }else{
+        treConsonanti = treConsonanti.toSpliced(1, 1).slice(0, 3).join("")
+    }
+
     console.log(treConsonanti);
     return treConsonanti
 
@@ -127,9 +152,9 @@ function getCognome(cognome) {
 
     let nomeToUpper = cognome.toLocaleUpperCase()
     let splitNome = nomeToUpper.split("")
-    let vocali =splitNome.filter(function (splitNome) {
+    let vocali = splitNome.filter(function (splitNome) {
         return "AEIOU".includes(splitNome)
-        
+
     })
 
     //    filtra le vocali
@@ -142,15 +167,15 @@ function getCognome(cognome) {
 
     }).slice(0, 3).join("")
 
-    
-    if (treConsonanti < 3 ) {
+
+    if (treConsonanti < 3) {
         treConsonanti += vocali[0]
-        
+
     }
     console.log(treConsonanti);
     console.log(vocali);
     return treConsonanti;
-    
+
 }
 
 function genera() {
@@ -158,19 +183,13 @@ function genera() {
     let cognome = document.getElementById("cognome").value;
     let codFiscNome = getNome(nome);
     let codFiscCognome = getCognome(cognome);
-    
-    let CodFiscGiorno = getGiorno();
+
+    // let CodFiscGiorno = getGiorno();
     let codfFiscAnno = getAnno();
     let codFiscMese = getMese();
-    let codiceFiscale = codFiscCognome + codFiscNome + codfFiscAnno + codFiscMese;
+    let codfiscgiorno = getGiorno();
+    let codiceFiscale = codFiscCognome + codFiscNome + codfFiscAnno + codFiscMese + codfiscgiorno;
 
     document.getElementById('CF').innerHTML = codiceFiscale;
 }
 
-
-
-// function nome() {
-//     let name = document.getElementById("nome");
-//     name.value;    
-//     console.log(name)
-// }
